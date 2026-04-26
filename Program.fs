@@ -1,10 +1,8 @@
 ﻿open LegendSword100.State
+open LegendSword100.UI
 
 [<EntryPoint>]
 let main argv =
-  let swords = DataLoader.swords 
-  Map.find 1u swords |> printfn "%A"
-  Map.find 20u swords |> printfn "%A"
-  Map.find 50u swords |> printfn "%A"
-  Map.find 100u swords |> printfn "%A"
+  let initialState = StateInitializer.initialGameState
+  displayState initialState
   0

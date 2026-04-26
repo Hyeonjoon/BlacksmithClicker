@@ -15,7 +15,11 @@ type GameState = {
   mutable Gold: uint64
 }
 
-module DataLoader = 
+module Constants =
+  let minSwordLevel, maxSwordLevel = 1u, 100u
+  let initialGold = 100000UL
+
+module StateInitializer = 
   let csvPath = "SwordList.csv"
   
   let private parseLine (line: string) =
@@ -40,6 +44,7 @@ module DataLoader =
 
   let swords = loadSwordData ()
 
-module Constants =
-  let minSwordLevel, maxSwordLevel = 1u, 100u
-  let initialGold = 100000UL
+  let initialGameState = {
+    GameState.CurrentSword = Map.find Constants.minSwordLevel swords
+    Gold = Constants.initialGold
+  }
