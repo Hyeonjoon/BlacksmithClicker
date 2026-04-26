@@ -19,6 +19,10 @@ let main argv =
       let result = sell state
       result.Message |> printfn "%s" 
       gameLoop result.State
+    | "3" ->
+      "=============================" |> printfn "%s"
+      "상태를 초기화합니다." |> printfn "%s"
+      gameLoop StateGenerator.initialGameState
     | "4" -> 
       "=============================" |> printfn "%s" 
       "게임을 종료합니다." |> printfn "%s" 
