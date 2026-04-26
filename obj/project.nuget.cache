@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "B3dYH+EXl/I=",
+  "success": true,
+  "projectFilePath": "/Users/joon/CS220/LegendSword100/LegendSword100.fsproj",
+  "expectedPackageFiles": [
+    "/Users/joon/.nuget/packages/fsharp.core/10.0.103/fsharp.core.10.0.103.nupkg.sha512"
+  ],
+  "logs": []
+}
