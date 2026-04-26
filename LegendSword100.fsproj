@@ -8,6 +8,7 @@
   <ItemGroup>
     <Compile Include="State.fs" />
     <Compile Include="UI.fs" />
+    <Compile Include="Logic.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

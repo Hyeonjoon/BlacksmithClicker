@@ -15,11 +15,17 @@ type GameState = {
   mutable Gold: uint64
 }
 
+type UpgradeResult = {
+  Succeed: bool
+  Message: string
+  State: GameState
+}
+
 module Constants =
   let minSwordLevel, maxSwordLevel = 1u, 100u
   let initialGold = 100000UL
 
-module StateInitializer = 
+module StateGenerator = 
   let csvPath = "SwordList.csv"
   
   let private parseLine (line: string) =
@@ -44,7 +50,19 @@ module StateInitializer =
 
   let swords = loadSwordData ()
 
+  let private getSword (level: uint): Sword = Map.find level swords
+
   let initialGameState = {
-    GameState.CurrentSword = Map.find Constants.minSwordLevel swords
+    GameState.CurrentSword = getSword Constants.minSwordLevel
     Gold = Constants.initialGold
+  }
+
+  let upgradeSucceedState (previousState: GameState) = {
+    GameState.CurrentSword = getSword (previousState.CurrentSword.Level + 1u)
+    Gold = previousState.Gold - previousState.CurrentSword.UpgradeCost
+  }
+
+  let upgradeFailedState (previousState: GameState) = {
+    GameState.CurrentSword = getSword Constants.minSwordLevel
+    Gold = previousState.Gold - previousState.CurrentSword.UpgradeCost
   }
