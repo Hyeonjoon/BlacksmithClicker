@@ -8,8 +8,12 @@ let main argv =
   let random = System.Random ()
   let rec gameLoop (state: GameState) = 
     displayState state
-    let cmd = getCommand ()
-    let result = upgrade state random
-    result.Message |> printfn "%s" 
-    gameLoop result.State
+    match getCommand () with
+    | "1" -> 
+      let result = upgrade state random
+      result.Message |> printfn "%s" 
+      gameLoop result.State
+    | _ -> 
+      "Not Implemented" |> printfn "%s" 
+      gameLoop state
   gameLoop StateGenerator.initialGameState
