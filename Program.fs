@@ -13,6 +13,10 @@ let main argv =
       let result = upgrade state random
       result.Message |> printfn "%s" 
       gameLoop result.State
+    | "4" -> 
+      "-----------------------------" |> printfn "%s" 
+      "게임을 종료합니다." |> printfn "%s" 
+      0
     | _ -> 
       "Not Implemented" |> printfn "%s" 
       gameLoop state
