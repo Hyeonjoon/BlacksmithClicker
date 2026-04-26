@@ -10,11 +10,17 @@ let main argv =
     displayState state
     match getCommand () with
     | "1" -> 
+      "=============================" |> printfn "%s" 
       let result = upgrade state random
       result.Message |> printfn "%s" 
       gameLoop result.State
+    | "2" ->
+      "=============================" |> printfn "%s" 
+      let result = sell state
+      result.Message |> printfn "%s" 
+      gameLoop result.State
     | "4" -> 
-      "-----------------------------" |> printfn "%s" 
+      "=============================" |> printfn "%s" 
       "게임을 종료합니다." |> printfn "%s" 
       0
     | _ -> 

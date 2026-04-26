@@ -15,8 +15,7 @@ type GameState = {
   mutable Gold: uint64
 }
 
-type UpgradeResult = {
-  Succeed: bool
+type Result = {
   Message: string
   State: GameState
 }
@@ -65,4 +64,9 @@ module StateGenerator =
   let upgradeFailedState (previousState: GameState) = {
     GameState.CurrentSword = getSword Constants.minSwordLevel
     Gold = previousState.Gold - previousState.CurrentSword.UpgradeCost
+  }
+
+  let salesCompletedState (previousState: GameState) = {
+    GameState.CurrentSword = getSword Constants.minSwordLevel
+    Gold = previousState.Gold + previousState.CurrentSword.SellingPrice
   }
