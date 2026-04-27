@@ -11,8 +11,8 @@ let main argv =
     match getCommand (), state with
     | _, s when s.CurrentSword.Level >= Constants.maxSwordLevel ->
       "=============================" |> printfn "%s" 
-      "축하합니다. 100강 검을 획득했습니다." |> printfn "%s" 
-      "게임을 종료합니다." |> printfn "%s" 
+      "Congratulations. You get the Lv.100 legend sword." |> printfn "%s" 
+      "It's over!" |> printfn "%s" 
       0
     | "1", _ -> 
       "=============================" |> printfn "%s" 
@@ -26,13 +26,13 @@ let main argv =
       gameLoop result.State
     | "3", _ ->
       "=============================" |> printfn "%s"
-      "상태를 초기화합니다." |> printfn "%s"
+      "The game has been initialized." |> printfn "%s"
       gameLoop StateGenerator.initialGameState
     | "4", _ -> 
       "=============================" |> printfn "%s" 
-      "게임을 종료합니다." |> printfn "%s" 
+      "The game is being terminated." |> printfn "%s" 
       0
     | _, _ -> 
-      "지원하지 않는 옵션입니다." |> printfn "%s" 
+      "This is an unsupported option." |> printfn "%s" 
       gameLoop state
   gameLoop StateGenerator.initialGameState

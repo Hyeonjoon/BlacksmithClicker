@@ -4,10 +4,10 @@ open LegendSword100.State
 
 let displayState (state: GameState) =
   printfn "-----------------------------"
-  printfn "현재 검: %s (+%d)" state.CurrentSword.Name state.CurrentSword.Level
-  printfn "보유 골드: %d" state.Gold
-  printfn "강화 비용: %d | 판매 가격: %d | 성공 확률: %d%%" state.CurrentSword.UpgradeCost state.CurrentSword.SellingPrice state.CurrentSword.UpgradeProbability
-  printfn "1. 강화 | 2. 판매 | 3. 초기화 | 4. 종료"
+  printfn "Current Sword: %s (Lv.%d)" state.CurrentSword.Name state.CurrentSword.Level
+  printfn "Balance: %d Gold" state.Gold
+  printfn "Upgrade Cost: %d Gold | Selling Price: %d Gold | Upgrade Probability: %d%%" state.CurrentSword.UpgradeCost state.CurrentSword.SellingPrice state.CurrentSword.UpgradeProbability
+  printfn "1. Upgrade Sword | 2. Sell Sword | 3. Initialize Game | 4. Quit Game"
   printf ">> "
 
 let getCommand () =

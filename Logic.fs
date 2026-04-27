@@ -5,19 +5,19 @@ open System
 
 let private lackOfGold (state: GameState): Result = 
   {
-    Message = "골드가 부족합니다."
+    Message = "You don't have enough Gold for upgrade."
     State = state
   }
 
 let private succeed (state: GameState): Result =
   {
-    Message = "강화에 성공하였습니다."
+    Message = "Upgrade succeeds."
     State = StateGenerator.upgradeSucceedState state
   }
 
 let private failed (state: GameState): Result =
   {
-    Message = "검이 파괴되었습니다."
+    Message = "The sword has been destroyed."
     State = StateGenerator.upgradeFailedState state
   }
 
@@ -32,6 +32,6 @@ let upgrade (state: GameState) (random: Random): Result =
 
 let sell (state: GameState): Result =
   {
-    Message = "판매를 완료했습니다."
+    Message = "The sword has been sold."
     State = StateGenerator.salesCompletedState state
   }
