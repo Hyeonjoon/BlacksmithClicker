@@ -68,12 +68,18 @@ module StateGenerator =
 
   let upgradeFailedState (previousState: GameState) = {
     GameState.DefaultSword = previousState.DefaultSword
-    CurrentSword = getSword Constants.minSwordLevel
+    CurrentSword = previousState.DefaultSword
     Gold = previousState.Gold - previousState.CurrentSword.UpgradeCost
   }
 
   let salesCompletedState (previousState: GameState) = {
     GameState.DefaultSword = previousState.DefaultSword
-    CurrentSword = getSword Constants.minSwordLevel
+    CurrentSword = previousState.DefaultSword
     Gold = previousState.Gold + previousState.CurrentSword.SellingPrice
+  }
+
+  let permanetlyPurchasedState (previousState: GameState) = {
+    GameState.DefaultSword = previousState.CurrentSword
+    CurrentSword = previousState.CurrentSword
+    Gold = previousState.Gold - previousState.CurrentSword.PermanentPurchaseCost
   }

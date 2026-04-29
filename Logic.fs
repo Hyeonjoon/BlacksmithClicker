@@ -5,7 +5,7 @@ open System
 
 let private lackOfGold (state: GameState): Result = 
   {
-    Message = "You don't have enough Gold for upgrade."
+    Message = "You don't have enough Gold."
     State = state
   }
 
@@ -26,12 +26,19 @@ let private executeUpgrade (sword: Sword) (random: Random): bool =
   uint (random.NextDouble() * 100.0) <= probability
 
 let upgrade (state: GameState) (random: Random): Result =
-    if state.Gold < state.CurrentSword.UpgradeCost then lackOfGold state
-    elif executeUpgrade state.CurrentSword random then succeed state
-    else failed state
+  if state.Gold < state.CurrentSword.UpgradeCost then lackOfGold state
+  elif executeUpgrade state.CurrentSword random then succeed state
+  else failed state
 
 let sell (state: GameState): Result =
   {
     Message = "The sword has been sold."
     State = StateGenerator.salesCompletedState state
+  }
+
+let purchasePermanently (state: GameState): Result = 
+  if state.Gold < state.CurrentSword.PermanentPurchaseCost then lackOfGold state
+  else {
+    Message = "Permanently purchased current sword."
+    State = StateGenerator.permanetlyPurchasedState state
   }
