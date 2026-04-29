@@ -54,7 +54,6 @@ let displayState (state: GameState) (lastMessage: string) (color: ConsoleColor o
   printf ">> Select option: "
 
 let displayTerminationMessage (message: string) (color: ConsoleColor option) = 
-  System.Console.Clear()
   printfn "%s" sectionDivider
   printRow message color
   printfn "%s" sectionDivider
