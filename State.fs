@@ -1,6 +1,7 @@
 namespace BlacksmithClicker.State
 
 open System.IO
+open System
 
 type Sword = {
   Level: uint
@@ -19,6 +20,7 @@ type GameState = {
 
 type Result = {
   Message: string
+  Color: ConsoleColor option
   State: GameState
 }
 

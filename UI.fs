@@ -1,46 +1,58 @@
 module BlacksmithClicker.UI
 
 open BlacksmithClicker.State
+open System
 
 
 let private displayWidth = 85
 let private sectionDivider = String.replicate displayWidth "="
 let private innerDivider = String.replicate displayWidth "-"
 
-let private printRow (text: string) =
-  let innerWidth = displayWidth - 6 // Except '||(space)(space)||'
-  printfn "|| %-*s ||" innerWidth text
+let private printRow (text: string) (color: ConsoleColor option) =
+    let innerWidth = displayWidth - 6 // Except '||(space)(space)||'
+    printf "|| "
+    
+    match color with
+    | Some c -> 
+        Console.ForegroundColor <- c
+        printf "%-*s" innerWidth text
+        Console.ResetColor()
+    | None -> 
+        printf "%-*s" innerWidth text
+        
+    printfn " ||"
 
-let displayState (state: GameState) (lastMessage: string) =
+let displayState (state: GameState) (lastMessage: string) (color: ConsoleColor option) =
   // 1. Display NOTIFICATION section.
   printfn "%s" sectionDivider
-  printRow (sprintf "!! NOTIFICATION: %s" lastMessage)
+  printRow "!! NOTIFICATION" (Some ConsoleColor.Yellow)
+  printRow lastMessage color
 
   // 2. Display STATUS section.
   printfn "%s" sectionDivider
-  printRow "!! STATUS"
-  printRow (sprintf "Current Sword: %s (Lv.%d)" state.CurrentSword.Name state.CurrentSword.Level)
-  printRow (sprintf "Balance: %d Gold" state.Gold)
+  printRow "!! STATUS" (Some ConsoleColor.Yellow)
+  printRow (sprintf "Current Sword: %s (Lv.%d)" state.CurrentSword.Name state.CurrentSword.Level) None
+  printRow (sprintf "Balance: %d Gold" state.Gold) None
   
   printfn "%s" innerDivider
   let row1 = sprintf "Upgrade Cost: %d Gold  | Upgrade Probability: %d%%" state.CurrentSword.UpgradeCost state.CurrentSword.UpgradeProbability
   let row2 = sprintf "Selling Price: %d Gold | Permanent Purchase Cost: %d" state.CurrentSword.SellingPrice state.CurrentSword.PermanentPurchaseCost
-  printRow row1
-  printRow row2
+  printRow row1 None
+  printRow row2 None
 
   // 3. Display OPTIONS section.
   printfn "%s" sectionDivider
-  printRow "!! OPTIONS"
-  printRow "1. Upgrade Sword | 2. Sell Sword | 3. Purchase sword permanently"
-  printRow "4. Initialize Game | 5. Quit Game"
+  printRow "!! OPTIONS" (Some ConsoleColor.Yellow)
+  printRow "1. Upgrade Sword | 2. Sell Sword | 3. Purchase sword permanently" None
+  printRow "4. Initialize Game | 5. Quit Game" None
 
   // 4. Display guide line for option selection.
   printfn "%s" innerDivider
   printf ">> Select option: "
 
-let displayTerminationMessage (message: string) = 
+let displayTerminationMessage (message: string) (color: ConsoleColor option) = 
   printfn "%s" sectionDivider
-  printRow message
+  printRow message color
   printfn "%s" sectionDivider
 
 let getCommand () =
