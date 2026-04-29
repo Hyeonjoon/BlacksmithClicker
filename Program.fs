@@ -5,7 +5,6 @@ open System
 
 [<EntryPoint>]
 let main argv =
-  let random = System.Random ()
   let rec gameLoop (state: GameState) (lastMessage: string) (lastMessageColor: ConsoleColor option) = 
     displayState state lastMessage lastMessageColor
     match getCommand (), state with
@@ -13,7 +12,7 @@ let main argv =
       displayTerminationMessage "Congratulations. You get the Lv.100 legend sword. It's over!" (Some ConsoleColor.Green)
       0
     | "1", _ -> 
-      let result = upgrade state random
+      let result = upgrade state
       gameLoop result.State result.Message result.Color
     | "2", _ ->
       let result = sell state

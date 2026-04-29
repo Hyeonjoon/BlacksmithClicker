@@ -3,6 +3,8 @@ module BlacksmithClicker.Logic
 open BlacksmithClicker.State
 open System
 
+let private random = System.Random ()
+
 let private lackOfGold (state: GameState): Result = 
   {
     Message = "You don't have enough Gold."
@@ -24,13 +26,13 @@ let private failed (state: GameState): Result =
     State = StateGenerator.upgradeFailedState state
   }
 
-let private executeUpgrade (sword: Sword) (random: Random): bool =
+let private executeUpgrade (sword: Sword): bool =
   let probability = sword.UpgradeProbability
   uint (random.NextDouble() * 100.0) <= probability
 
-let upgrade (state: GameState) (random: Random): Result =
+let upgrade (state: GameState): Result =
   if state.Gold < state.CurrentSword.UpgradeCost then lackOfGold state
-  elif executeUpgrade state.CurrentSword random then succeed state
+  elif executeUpgrade state.CurrentSword then succeed state
   else failed state
 
 let sell (state: GameState): Result =
