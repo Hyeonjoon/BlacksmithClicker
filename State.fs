@@ -8,6 +8,7 @@ type Sword = {
   UpgradeCost: uint64
   SellingPrice: uint64
   UpgradeProbability: uint
+  PermanentPurchaseCost: uint64
 }
 
 type GameState = {
@@ -35,6 +36,7 @@ module StateGenerator =
       UpgradeCost = uint64 row.[2]
       SellingPrice = uint64 row.[3]
       UpgradeProbability = uint row.[4]
+      PermanentPurchaseCost = uint64 row.[5]
     }
 
   let private loadSwordData () =
