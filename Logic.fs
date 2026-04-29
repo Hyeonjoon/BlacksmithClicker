@@ -12,6 +12,14 @@ let private lackOfGold (state: GameState): Result =
     State = state
   }
 
+let private alreadyPurchased (state: GameState): Result = 
+  {
+    Message = "You'd already purchased this sword."
+    Color = Some ConsoleColor.Red
+    State = state
+  }
+
+
 let private succeed (state: GameState): Result =
   {
     Message = "Upgrade succeeds."
@@ -44,6 +52,7 @@ let sell (state: GameState): Result =
 
 let purchasePermanently (state: GameState): Result = 
   if state.Gold < state.CurrentSword.PermanentPurchaseCost then lackOfGold state
+  elif state.CurrentSword.Level = state.DefaultSword.Level then alreadyPurchased state
   else {
     Message = "Permanently purchased current sword."
     Color = Some ConsoleColor.Green
