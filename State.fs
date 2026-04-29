@@ -12,8 +12,9 @@ type Sword = {
 }
 
 type GameState = {
-  mutable CurrentSword: Sword
-  mutable Gold: uint64
+  DefaultSword: Sword
+  CurrentSword: Sword
+  Gold: uint64
 }
 
 type Result = {
@@ -54,21 +55,25 @@ module StateGenerator =
   let private getSword (level: uint): Sword = Map.find level swords
 
   let initialGameState = {
-    GameState.CurrentSword = getSword Constants.minSwordLevel
+    GameState.DefaultSword = getSword Constants.minSwordLevel
+    CurrentSword = getSword Constants.minSwordLevel
     Gold = Constants.initialGold
   }
 
   let upgradeSucceedState (previousState: GameState) = {
-    GameState.CurrentSword = getSword (previousState.CurrentSword.Level + 1u)
+    GameState.DefaultSword = previousState.DefaultSword
+    CurrentSword = getSword (previousState.CurrentSword.Level + 1u)
     Gold = previousState.Gold - previousState.CurrentSword.UpgradeCost
   }
 
   let upgradeFailedState (previousState: GameState) = {
-    GameState.CurrentSword = getSword Constants.minSwordLevel
+    GameState.DefaultSword = previousState.DefaultSword
+    CurrentSword = getSword Constants.minSwordLevel
     Gold = previousState.Gold - previousState.CurrentSword.UpgradeCost
   }
 
   let salesCompletedState (previousState: GameState) = {
-    GameState.CurrentSword = getSword Constants.minSwordLevel
+    GameState.DefaultSword = previousState.DefaultSword
+    CurrentSword = getSword Constants.minSwordLevel
     Gold = previousState.Gold + previousState.CurrentSword.SellingPrice
   }
