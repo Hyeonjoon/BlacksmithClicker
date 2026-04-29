@@ -25,10 +25,15 @@ let main argv =
       result.Message |> printfn "%s" 
       gameLoop result.State
     | "3", _ ->
+      "=============================" |> printfn "%s" 
+      let result = purchasePermanently state
+      result.Message |> printfn "%s" 
+      gameLoop result.State
+    | "4", _ ->
       "=============================" |> printfn "%s"
       "The game has been initialized." |> printfn "%s"
       gameLoop StateGenerator.initialGameState
-    | "4", _ -> 
+    | "5", _ -> 
       "=============================" |> printfn "%s" 
       "The game is being terminated." |> printfn "%s" 
       0

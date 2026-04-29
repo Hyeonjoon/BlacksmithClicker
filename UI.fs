@@ -6,8 +6,8 @@ let displayState (state: GameState) =
   printfn "-----------------------------"
   printfn "Current Sword: %s (Lv.%d)" state.CurrentSword.Name state.CurrentSword.Level
   printfn "Balance: %d Gold" state.Gold
-  printfn "Upgrade Cost: %d Gold | Selling Price: %d Gold | Upgrade Probability: %d%%" state.CurrentSword.UpgradeCost state.CurrentSword.SellingPrice state.CurrentSword.UpgradeProbability
-  printfn "1. Upgrade Sword | 2. Sell Sword | 3. Initialize Game | 4. Quit Game"
+  printfn "Upgrade Cost: %d Gold | Selling Price: %d Gold | Upgrade Probability: %d%% | Permanent Purchase Cost: %d" state.CurrentSword.UpgradeCost state.CurrentSword.SellingPrice state.CurrentSword.UpgradeProbability state.CurrentSword.PermanentPurchaseCost
+  printfn "1. Upgrade Sword | 2. Sell Sword | 3. Purchase sword permanently | 4. Initialize Game | 5. Quit Game"
   printf ">> "
 
 let getCommand () =
