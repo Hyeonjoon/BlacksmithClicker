@@ -23,6 +23,9 @@ let private printRow (text: string) (color: ConsoleColor option) =
     printfn " ||"
 
 let displayState (state: GameState) (lastMessage: string) (color: ConsoleColor option) =
+  // 0. Clear UI.
+  System.Console.Clear()
+
   // 1. Display NOTIFICATION section.
   printfn "%s" sectionDivider
   printRow "!! NOTIFICATION" (Some ConsoleColor.Yellow)
@@ -51,6 +54,7 @@ let displayState (state: GameState) (lastMessage: string) (color: ConsoleColor o
   printf ">> Select option: "
 
 let displayTerminationMessage (message: string) (color: ConsoleColor option) = 
+  System.Console.Clear()
   printfn "%s" sectionDivider
   printRow message color
   printfn "%s" sectionDivider
