@@ -1,4 +1,4 @@
-namespace LegendSword100.State
+namespace BlacksmithClicker.State
 
 open System.IO
 

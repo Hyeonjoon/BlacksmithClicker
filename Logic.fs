@@ -1,6 +1,6 @@
-module LegendSword100.Logic
+module BlacksmithClicker.Logic
 
-open LegendSword100.State
+open BlacksmithClicker.State
 open System
 
 let private lackOfGold (state: GameState): Result = 

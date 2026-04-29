@@ -1,6 +1,6 @@
-﻿open LegendSword100.State
-open LegendSword100.UI
-open LegendSword100.Logic
+﻿open BlacksmithClicker.State
+open BlacksmithClicker.UI
+open BlacksmithClicker.Logic
 open System
 
 [<EntryPoint>]

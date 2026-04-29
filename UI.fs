@@ -1,6 +1,6 @@
-module LegendSword100.UI
+module BlacksmithClicker.UI
 
-open LegendSword100.State
+open BlacksmithClicker.State
 
 let displayState (state: GameState) =
   printfn "-----------------------------"

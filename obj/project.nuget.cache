@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B3dYH+EXl/I=",
+  "dgSpecHash": "L8H3T6cVVX0=",
   "success": true,
-  "projectFilePath": "/Users/joon/CS220/LegendSword100/LegendSword100.fsproj",
+  "projectFilePath": "/Users/joon/CS220/BlacksmithClicker/BlacksmithClicker.fsproj",
   "expectedPackageFiles": [
     "/Users/joon/.nuget/packages/fsharp.core/10.0.103/fsharp.core.10.0.103.nupkg.sha512"
   ],

@@ -113,11 +113,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/joon/CS220/LegendSword100/LegendSword100.fsproj",
-      "projectName": "LegendSword100",
-      "projectPath": "/Users/joon/CS220/LegendSword100/LegendSword100.fsproj",
+      "projectUniqueName": "/Users/joon/CS220/BlacksmithClicker/BlacksmithClicker.fsproj",
+      "projectName": "BlacksmithClicker",
+      "projectPath": "/Users/joon/CS220/BlacksmithClicker/BlacksmithClicker.fsproj",
       "packagesPath": "/Users/joon/.nuget/packages/",
-      "outputPath": "/Users/joon/CS220/LegendSword100/obj/",
+      "outputPath": "/Users/joon/CS220/BlacksmithClicker/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/joon/.nuget/NuGet/NuGet.Config"
